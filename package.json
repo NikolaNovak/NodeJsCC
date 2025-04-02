@@ -1,0 +1,23 @@
+{
+  "name": "nodejscc",
+  "version": "1.0.0",
+  "description": "Node,js crash course",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon --env-file=.env server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NikolaNovak/NodeJsCC.git"
+  },
+  "author": "NN",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NikolaNovak/NodeJsCC/issues"
+  },
+  "homepage": "https://github.com/NikolaNovak/NodeJsCC#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
