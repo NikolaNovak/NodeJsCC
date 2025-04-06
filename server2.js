@@ -38,6 +38,19 @@ const getUserByIdHandler = (req, res) => {
 	res.end()
 }
 
+const createUserHandler = (req, res) => {
+	let body = ""
+	req.on("data", (chunk) => {
+		body += chunk.toString()
+	})
+	req.on("end", () => {
+		const user = JSON.parse(body)
+		users.push(user)
+		res.statusCode = 201
+		res.end(JSON.stringify(user))
+	})
+}
+
 const notFoundHandler = (req, res) => {
 	res.statusCode = 404
 	res.write(JSON.stringify({ message: "Route not found" }))
@@ -49,6 +62,8 @@ const server = createServer((req, res) => {
 		jsonMiddleware(req, res, () => {
 			if (req.url === "/api/users" && req.method === "GET") {
 				getUsersHandler(req, res)
+			} else if (req.url === "/api/users" && req.method === "POST") {
+				createUserHandler(req, res)
 			} else if (
 				req.url.match(/\/api\/users\/([0-9]+)/) &&
 				req.method === "GET"
